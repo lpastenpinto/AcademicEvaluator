@@ -1,0 +1,459 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using MT.Modelo;
+
+
+using System.Data.OleDb;
+using System.Data; 
+
+
+namespace MT.Controlador
+{
+    class ControladorMetodos
+    {
+
+
+        DatosExcel datosExcel = new DatosExcel();
+
+
+        public double promedioAlumno(string keyAlumno)
+        {
+            datosExcel.CargarDatos_ExcelDatos();
+            List<List<string>> datosExcelAlumno = datosExcel.GetArchivoAlumno();
+            double promediogeneralAlumno = 0;
+            double nota = 0;
+            int contador = 0;
+
+            for (int i = 1; i < datosExcelAlumno.Count; i++)
+            {
+
+                string key = ObtenerKeyNumerica(datosExcelAlumno[i][4].ToString());
+
+
+                if (key.Equals(keyAlumno))
+                {
+
+                    string notaencontrada = datosExcelAlumno[i][9].ToString();
+                    double notadouble = Convert.ToDouble(notaencontrada);
+                    nota = nota + notadouble;
+                    contador++;
+
+                }
+            }
+            try
+            {
+                promediogeneralAlumno = nota / contador;
+                return promediogeneralAlumno;
+            }
+            catch { return 4.0; }
+        }
+
+
+        public double efectividadAprobacion(string key)
+        {
+
+            datosExcel.CargarDatos_ExcelDatos();
+            List<List<string>> datosExcelAlumno = datosExcel.GetArchivoAlumno();
+
+            int contador = 0;
+            int contadoraprobado = 0;
+
+            for (int i = 0; i < datosExcelAlumno.Count; i++)
+            {
+                string keyEncontrada = ObtenerKeyNumerica(datosExcelAlumno[i][4].ToString());
+
+                if (keyEncontrada.Equals(key))
+                {
+                    string estado = datosExcelAlumno[i][10].ToString();
+                    if (estado.Equals("APROBADO"))
+                    {
+                        contadoraprobado++;
+                    }
+                    contador++;
+                }
+
+            }
+
+            try
+            {
+                double efectividad = (contadoraprobado * 100) / contador;
+                return efectividad;
+            }
+            catch { return 50; }
+        }
+
+
+        //Convierte el Key en un Rut
+        public String keyRut(string p)
+        {
+
+            //MessageBox.Show("El Key que trae  :"+ p);
+            String buffer = p;
+            String buff = "";
+            String[] split = Regex.Split(buffer, "[a-zA-Z]");
+
+            try
+            {
+                for (int i = 0; i < split.Length; i++)
+                {
+                    String cadena = split[i];
+
+                    // MessageBox.Show(split[i]);
+
+                    int num = Convert.ToInt16(cadena);
+
+                    if (num == 624)
+                    {
+                        buff = buff + "0";
+                        continue;
+                    }
+                    if (num == 2906)
+                    {
+                        buff = buff + "1";
+                        continue;
+                    }
+                    if (num == 538)
+                    {
+                        buff = buff + "2";
+                        continue;
+                    }
+                    if (num == 368)
+                    {
+                        buff = buff + "3";
+                        continue;
+                    }
+                    if (num == 529)
+                    {
+                        buff = buff + "4";
+                        continue;
+                    }
+                    if (num == 1802)
+                    {
+                        buff = buff + "5";
+                        continue;
+                    }
+                    if (num == 1962)
+                    {
+                        buff = buff + "6";
+                        continue;
+                    }
+                    if (num == 2653)
+                    {
+                        buff = buff + "7";
+                        continue;
+                    }
+                    if (num == 1794)
+                    {
+                        buff = buff + "8";
+                        continue;
+                    }
+                    if (num == 1175)
+                        buff = buff + "9";
+
+                }
+            }
+            catch { }
+
+            int M = 0;
+            int S = 1;
+            for (int T = Convert.ToInt32(buff); T != 0; T /= 10)
+                S = (S + (T % 10) * (9 - M++ % 6)) % 11;
+
+            return (Convert.ToString((new StringBuilder()).Append(buff).Append("-").Append((char)(S == 0 ? 75 : S + 47))));
+        }
+
+
+
+        internal List<string> ListaLlenarAsignaturas()
+        {
+            datosExcel.CargarDatos_ExcelDatos();
+            List<List<string>> listaDatos = datosExcel.GetArchivoAlumno();
+            List<string> listaAsignaturas = new List<string>();
+
+            for (int i = 1; i < listaDatos.Count; i++)
+            {
+
+                string asignatura = listaDatos[i][3].ToString();
+                if (!listaAsignaturas.Contains(asignatura))
+                {
+                    listaAsignaturas.Add(asignatura);
+                }
+
+            }
+
+
+            return listaAsignaturas;
+        }
+
+
+        internal List<string> ListaLlenarAsignaturasAprobadas(string key)
+        {
+            datosExcel.CargarDatos_ExcelDatos();
+            List<string> ListaAprobadas = new List<string>();
+            List<List<string>> datosExcelAlumno = datosExcel.GetArchivoAlumno();
+
+
+            for (int i = 1; i < datosExcelAlumno.Count; i++)
+            {
+
+                string keyEncontrada = ObtenerKeyNumerica(datosExcelAlumno[i][4].ToString());
+
+                if (keyEncontrada.Equals(key))
+                {
+
+                    string estado = datosExcelAlumno[i][10].ToString();
+                    if (estado.Equals("APROBADO") || estado.Equals("HOMOLOGADO"))
+                    {
+
+                        if (!ListaAprobadas.Contains(datosExcelAlumno[i][3].ToString()))
+                        {
+                            ListaAprobadas.Add(datosExcelAlumno[i][3].ToString());
+                        }
+
+                    }
+
+                }
+            }
+            return ListaAprobadas;
+        }
+
+
+
+        internal string ObtenerKeyNumerica(string llave)
+        {
+            // Solo Digitos
+            string pattern = @"\d";
+            StringBuilder sb = new StringBuilder();
+            foreach (Match m in Regex.Matches(llave, pattern))
+            {
+                sb.Append(m);
+            }
+            return sb.ToString();
+        }
+
+
+        internal string TransformarRutaKey(string rutAlumno)
+        {
+            Char[] rut = rutAlumno.ToCharArray();
+            string keyNumerica = "";
+            for (int i = 0; i < rut.Length; i++)
+            {
+
+                if (rut[i].ToString().Equals("0")) { keyNumerica = keyNumerica + "624"; }
+                if (rut[i].ToString().Equals("1")) { keyNumerica = keyNumerica + "2906"; }
+                if (rut[i].ToString().Equals("2")) { keyNumerica = keyNumerica + "538"; }
+                if (rut[i].ToString().Equals("3")) { keyNumerica = keyNumerica + "368"; }
+                if (rut[i].ToString().Equals("4")) { keyNumerica = keyNumerica + "529"; }
+                if (rut[i].ToString().Equals("5")) { keyNumerica = keyNumerica + "1802"; }
+                if (rut[i].ToString().Equals("6")) { keyNumerica = keyNumerica + "1962"; }
+                if (rut[i].ToString().Equals("7")) { keyNumerica = keyNumerica + "2653"; }
+                if (rut[i].ToString().Equals("8")) { keyNumerica = keyNumerica + "1794"; }
+                if (rut[i].ToString().Equals("9")) { keyNumerica = keyNumerica + "1175"; }
+
+
+            }
+            return keyNumerica;
+        }
+
+
+        public string ConsultaPromedioAsignatura(string asignatura)
+        {
+
+            string CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            @"Data Source=C:\Datos MemoriaTitulo en C\datos.xls;" + @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
+            OleDbConnection con = new OleDbConnection(CadenaConexion);
+
+            string strSQL = "SELECT AVG(NOTA) FROM [Sheet 1$] WHERE NOMBRE='" + asignatura + "'";
+            OleDbDataAdapter da = new OleDbDataAdapter(strSQL, con);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            double resultado_double = Convert.ToDouble(ds.Tables[0].Rows[0].ItemArray[0]);
+            string resultado = Convert.ToString(Math.Round(resultado_double, 2));
+            con.Close();
+            return resultado;
+        }
+
+
+
+        public double ConsultaPorcentajeAprobacionAsignatura(string asignatura)
+        {
+
+            string CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            @"Data Source=C:\Datos MemoriaTitulo en C\datos.xls;" + @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
+            OleDbConnection con = new OleDbConnection(CadenaConexion);
+
+            string strSQL = "SELECT ESTADO_NOTA FROM [Sheet 1$] WHERE NOMBRE='" + asignatura + "'";
+            OleDbDataAdapter da = new OleDbDataAdapter(strSQL, con);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            int cantidad_total_asignatura = ds.Tables[0].Rows.Count;
+            int cantidad_asignatura_aprobado = 0;
+
+
+            for (int i = 0; i < cantidad_total_asignatura; i++)
+            {
+
+                string aprobado = Convert.ToString(ds.Tables[0].Rows[i].ItemArray[0]);
+
+                if (aprobado.Equals("APROBADO"))
+                {
+                    cantidad_asignatura_aprobado++;
+
+                }
+            }
+            con.Close();
+
+            return Math.Round((double)cantidad_asignatura_aprobado / cantidad_total_asignatura, 2);
+
+        }
+
+
+        public double EfectividadSolicitudesAlumno(string key)
+        {
+
+            //    MessageBox.Show(""+key);
+
+            datosExcel.CargarDatos_ExcelSolicitud();
+            List<List<string>> datosExcelSolicitudes = datosExcel.GetArchivoSolicitudes();
+
+            int contador_total_solicitudes = 0;
+            int contador_aprobado = 0;
+
+            for (int i = 0; i < datosExcelSolicitudes.Count; i++)
+            {
+                string keyEncontrada = ObtenerKeyNumerica(datosExcelSolicitudes[i][0].ToString());
+
+                if (keyEncontrada.Equals(key))
+                {
+                    string notaAsignatura = datosExcelSolicitudes[i][16].ToString();
+                    // MessageBox.Show(notaAsignatura);
+                    Char[] nota_string = notaAsignatura.ToCharArray();
+
+                    if (nota_string.Length > 0)
+                    {
+
+                        // MessageBox.Show(nota_string[0].ToString());
+                        int nota = Int32.Parse(nota_string[0].ToString());
+                        //  MessageBox.Show(""+nota);
+                        if (nota >= 4)
+                        {
+                            contador_aprobado++;
+                        }
+                        contador_total_solicitudes++;
+
+                        //if (rut[i].ToString().Equals("0"))                        
+                    }
+
+                }
+
+            }
+
+            double efectividad = ((double)contador_aprobado / contador_total_solicitudes) * 100;
+            return efectividad;
+
+        }
+
+
+
+
+        internal int ConsultaNivelAsignatura(string asignatura)
+        {
+            try
+            {
+                string CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+               @"Data Source=C:\Datos MemoriaTitulo en C\Malla2534.xls;" + @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
+                OleDbConnection con = new OleDbConnection(CadenaConexion);
+
+                string strSQL = "SELECT NIVEL FROM [Hoja1$] WHERE ASIGNATURA='" + asignatura + "'";
+                OleDbDataAdapter da = new OleDbDataAdapter(strSQL, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                int nivel = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[0]);
+                con.Close();
+                return nivel;
+            }
+            catch { return 0; }
+        }
+
+
+
+
+
+
+        internal int ConsultarCreditosAsignatura(string asignatura)
+        {
+
+
+            string CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+           @"Data Source=C:\Datos MemoriaTitulo en C\Malla2534.xls;" + @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
+            OleDbConnection con = new OleDbConnection(CadenaConexion);
+
+            string strSQL = "SELECT CREDITOS FROM [Hoja1$] WHERE ASIGNATURA='" + asignatura + "'";
+            OleDbDataAdapter da = new OleDbDataAdapter(strSQL, con);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            int nivel = Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[0]);
+            con.Close();
+            return nivel;
+
+
+
+
+
+
+        }
+
+
+
+
+
+        internal string ConsultarImportancia(string asignatura)
+        {
+
+
+            string CadenaConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+            @"Data Source=C:\Datos MemoriaTitulo en C\Malla2534.xls;" + @"Extended Properties=" + '"' + "Excel 8.0;HDR=YES" + '"';
+            OleDbConnection con = new OleDbConnection(CadenaConexion);
+
+            string strSQL = "SELECT IMPORTANCIA FROM [Hoja1$] WHERE ASIGNATURA='" + asignatura + "'";
+            OleDbDataAdapter da = new OleDbDataAdapter(strSQL, con);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            string importancia = ds.Tables[0].Rows[0].ItemArray[0].ToString();
+
+            return importancia;
+
+
+
+
+        }
+
+
+
+
+
+        internal bool alumnoexiste(string rut)
+        {
+            datosExcel.CargarDatos_ExcelDatos();
+            List<List<string>> datosExcelAlumno = datosExcel.GetArchivoAlumno();
+
+            for (int i = 1; i < datosExcelAlumno.Count; i++)
+            {
+
+                string keyEncontrada = ObtenerKeyNumerica(datosExcelAlumno[i][4].ToString());
+
+                if (keyEncontrada.Equals(rut))
+                { return true; }
+
+                
+            }
+            return false;
+        }
+    }
+
+}

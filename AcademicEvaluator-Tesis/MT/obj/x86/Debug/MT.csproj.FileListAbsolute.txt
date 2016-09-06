@@ -1,0 +1,81 @@
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.csproj.ResolveComReference.cache
+C:\Users\Hector\Desktop\MemoriaTitulo\Proyecto\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csproj.ResolveComReference.cache
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\Memoria Titu\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csproj.ResolveComReference.cache
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\MemoriaTitulo\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\MT\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\MT\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\MT\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\bin\Debug\MT.exe
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\bin\Debug\MT.pdb
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\LEO\Desktop\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\Hector\Desktop\Memo\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\Memo\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\Memo\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\bin\Debug\MT.exe
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\bin\Debug\MT.pdb
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormEditarImportanciaAsignaturas.resources
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormSolicitudesAlumno.resources
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\Hector\Desktop\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.pdb
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\bin\Debug\MT.exe
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\bin\Debug\MT.pdb
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormEditarImportanciaAsignaturas.resources
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormFormulario.resources
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.FormPrincipal.resources
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Properties.Resources.resources
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.Vista.FormSolicitudesAlumno.resources
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.exe
+C:\Users\LEO\Dropbox_leohm63\Dropbox\Memoria de Titulo\MT\MT\obj\x86\Debug\MT.pdb

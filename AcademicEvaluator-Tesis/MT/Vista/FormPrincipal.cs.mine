@@ -1,0 +1,232 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace MT
+{
+    public partial class FormPrincipal : Form
+    {
+        public FormPrincipal()
+        {
+            InitializeComponent();
+        }
+
+
+        Controlador.ControladorMetodos controlador = new Controlador.ControladorMetodos();
+        string rut=null;
+        int nivel_alumno;
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                    Modelo.DatosExcel datos = new Modelo.DatosExcel();
+                    datos.CargarDatos_ExcelMalla();
+
+                    List<List<string>> ArchivoAlumnos = datos.GetArchivoMalla();
+                    if (ArchivoAlumnos.Count == 0)
+                    {
+                        MessageBox.Show("La Lista de los Alumnos esta Vacia");
+                    }
+                    else { ImprimirExcel(ArchivoAlumnos); }
+
+                    //List<List<string>> ArchivoSolicitudes = datos.GetArchivoSolicitudes();
+                    //if (ArchivoSolicitudes.Count == 0)
+                    //{
+                    //    MessageBox.Show("La Lista de los Alumnos esta Vacia");
+                    //}
+
+                    //else { ImprimirExcel(ArchivoSolicitudes); }
+
+        }
+
+
+
+        //Imprime la Lista que retorna el DatosExcel.
+        private void ImprimirExcel(List<List<string>> listaArchivo)
+        {
+            for (int i = 0; i < listaArchivo.Count; i++)
+            {
+                Console.WriteLine("\n");
+                for (int j = 0; j < listaArchivo[i].Count; j++)
+                {
+                    MessageBox.Show(listaArchivo[i][j]);
+                    Console.Write(" " + listaArchivo[i][j]);
+                }
+            }
+        }
+
+
+
+
+        private void buttonConsultar_Click(object sender, EventArgs e)
+        {
+            
+            BorrarDatos();
+            String key = controlador.TransformarRutaKey(maskedTextBoxRut.Text.Replace(",", ""));
+            rut = key;
+            bool alumnoExiste =controlador.alumnoexiste(rut);
+
+            if (alumnoExiste)
+            {
+                
+                Vista.FormFormulario formulario = new Vista.FormFormulario(key);
+                formulario.ShowDialog();
+
+
+                double promedioAlumno = controlador.promedioAlumno(key);
+                //MessageBox.Show("Promedio" + promedioAlumno);
+                double efectividadAprobacion = controlador.efectividadAprobacion(key);
+
+                double efectividadSolicitudes = controlador.EfectividadSolicitudesAlumno(key);
+                // MessageBox.Show(""+efectividadAprobacion);
+
+                List<string> Lista = controlador.ListaLlenarAsignaturas();
+                List<string> ListaAsignaturasAprobadas = controlador.ListaLlenarAsignaturasAprobadas(key);
+
+                llenarComboBoxAsignatura(Lista, ListaAsignaturasAprobadas);
+
+                dataGridViewAlumnos.Rows.Add(Math.Round(promedioAlumno, 2), nivel_alumno, efectividadAprobacion, efectividadSolicitudes);
+
+            }
+            else {
+                MessageBox.Show("Alumno no existe");
+            }
+             
+
+                 
+            
+        }
+
+        private void BorrarDatos()
+        {
+            dataGridViewAlumnos.Rows.Clear();
+            dataGridViewAsignaturas.Rows.Clear();
+            comboBoxAsignaturas.Items.Clear();
+            textBoxCreditos.Text = "0";
+        }
+
+
+
+
+
+
+        private void llenarComboBoxAsignatura(List<string> Lista, List<string> ListaAprobadas)
+        {
+
+            for (int i = 0; i < ListaAprobadas.Count; i++ ) {
+
+                Lista.Remove(ListaAprobadas[i].ToString());
+            }
+
+            nivel_alumno = 11;
+            for (int i = 0; i<Lista.Count; i++) {
+                
+                    int nivel_asignatura = controlador.ConsultaNivelAsignatura(Lista[i].ToString());
+                    //  MessageBox.Show(""+nivel_asignatura);
+                    if (nivel_asignatura != 0)
+                    {
+                        if (nivel_asignatura < nivel_alumno)
+                        {
+                            nivel_alumno = nivel_asignatura;
+                        }
+                    }
+                        comboBoxAsignaturas.Items.Add(Lista[i].ToString());
+                    
+            }
+        }
+
+
+
+
+        private void comboBoxAsignaturas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string asignatura = comboBoxAsignaturas.Text;
+
+            if (!asignatura.Equals("ELECTIVO DE FORMACIÓN PROFESIONAL")) {
+                comboBoxAsignaturas.Items.Remove(asignatura);     
+            }
+
+            string promedio = controlador.ConsultaPromedioAsignatura(asignatura);
+            double porcentaje_aprobacion = controlador.ConsultaPorcentajeAprobacionAsignatura(asignatura);
+            int nivel_asignatura = controlador.ConsultaNivelAsignatura(asignatura);
+            int creditos_asignatura = controlador.ConsultarCreditosAsignatura(asignatura);
+            string importancia_asignatura = controlador.ConsultarImportancia(asignatura);
+            dataGridViewAsignaturas.Rows.Add(asignatura,promedio,porcentaje_aprobacion,importancia_asignatura,nivel_asignatura,creditos_asignatura);
+
+            textBoxCreditos.Text= ContarCreditos().ToString();
+        }
+
+
+
+        private int ContarCreditos()
+        {
+
+            int creditos=0;
+
+            for (int i = 0; i < dataGridViewAsignaturas.RowCount-1; i++)
+            {
+                creditos = creditos + Convert.ToInt16(dataGridViewAsignaturas.Rows[i].Cells[5].Value);
+            }
+
+            return creditos;
+        }
+
+
+
+       
+
+
+
+
+        private void boton_eliminar_asignatura_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridViewAsignaturas.Rows.RemoveAt(dataGridViewAsignaturas.CurrentRow.Index);
+                textBoxCreditos.Text = ContarCreditos().ToString();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("No se a seleccionado ninguna asignatura para eliminar");
+            }
+        }
+
+        private void dataGridViewAsignaturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                if (this.dataGridViewAsignaturas.Columns[e.ColumnIndex].Name.Equals("Eliminar"))
+                {
+                    dataGridViewAsignaturas.Rows.RemoveAt(dataGridViewAsignaturas.CurrentRow.Index);
+                    textBoxCreditos.Text = ContarCreditos().ToString();
+                }
+            }
+            catch { }
+        }
+
+
+
+
+        private void informaciónAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vista.FormFormulario formulario = new Vista.FormFormulario(rut);
+            formulario.ShowDialog(); 
+        }
+
+      
+
+
+
+
+       
+       
+
+       
+
+    }
+}
